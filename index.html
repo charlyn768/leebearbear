@@ -88,9 +88,11 @@
 </head>    
 <body>
     <div class="container">
-        <img id="cakeImage" src="cakebox.png" alt="Cake Box" class="fade" />
-        <p id="caption">點擊盒子一下，打開看看吧~ (⁠￣⁠︶⁠￣⁠)</p>
-        <!--<button id="start-btn">Start</button> -->
+        <button id="startBtn">▶️ 開始</button>
+        <div id="mainContent" style="display: none;">    
+            <img id="cakeImage" src="cakebox.png" alt="Cake Box" class="fade" />
+            <p id="caption">點擊盒子一下，打開看看吧~ (⁠￣⁠︶⁠￣⁠)</p>
+        </div>
     </div>
 
     <audio id="audioBefore" src="bgm.mp3" preload="auto"></audio>
@@ -102,15 +104,15 @@
 
         const audioBefore = document.getElementById("audioBefore");
         const audioAfter = document.getElementById("audioAfter");
-
+        const startBtn = document.getElementById("startBtn");
+        const mainContent = document.getElementById("mainContent");
         let step = 0;
 
         //play bgm when page load
-        window.addEventListener('load', () => {
-            audioBefore.play().catch(e => {
-                // Some browsers may block autoplay until user interacts
-                console.warn('Autoplay blocked:', e);
-            });
+        startBtn.addEventListener("click", () => {
+            audioBefore.play();
+            startBtn.style.display = "none"; // hide button
+            mainContent.style.display = "block"; // show cake & caption
         });
 
         cakeImage.addEventListener("click", () => {
