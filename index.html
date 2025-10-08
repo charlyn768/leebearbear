@@ -14,15 +14,23 @@
             src: url("zpix.ttf") format("truetype");
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
+            padding: 0;
             height: 100vh;
+            width: 100vw;
             background: linear-gradient(#c9a7eb, #fbb6b6);
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: "Zpix", monospace; /*pixelfont*/
             image-rendering: pixelated;
+            overflow: hidden;
+            text-align: center;
         }
 
         /*Responsive window box */
@@ -70,9 +78,12 @@
         }
 
         #caption {
-            margin-top: 20px;
-            font-size: 1.2em;
+            /*margin-top: 20px;*/
+            /*font-size: 1.2em;*/
+            font-size: 1em;
+            margin: 1em auto 0;
             color: #555;
+            padding: 0 1rem;
         }
 
         .hidden {
@@ -145,6 +156,14 @@
             }, 1000);
         }
         });
+
+        document.addEventListener("visibilitychange", ()=>{
+            if (document.hidden){
+                audioBefore.pause;
+                audioAfter.pause;
+            }
+        )};
     </script>
 </body>
 </html>
+
