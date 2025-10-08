@@ -31,7 +31,7 @@
             font-family: "Zpix", monospace; /*pixelfont*/
             image-rendering: pixelated;
             overflow-x: hidden;
-            overflow y: auto;
+            overflow-y: auto;
             text-align: center;
         }
 
@@ -139,23 +139,29 @@
 
             // Box → Cake
             cakeImage.classList.add("fade-out");
+
+            // wait for fade-out to finish (1s), then switch image
             setTimeout(() => {
-            cakeImage.src = "cakewithfire.png";
-            caption.textContent = "李大熊生日快樂！！(⁠ㆁ⁠ω⁠ㆁ)⁠ 點擊蛋糕吹蠟燭吧 ꒰⁠⑅⁠ᵕ⁠༚⁠ᵕ⁠꒱⁠˖ ~~";
-            cakeImage.classList.remove("fade-out");
-            cakeImage.classList.add("fade-in");
-            step++;
+                cakeImage.onload= () => {
+                    cakeImage.classList.remove("fade-out");
+                    cakeImage.classList.add("fade-in");
+                };
+                cakeImage.src = "cakewithfire.png";
+                caption.textContent = "李大熊生日快樂！！(⁠ㆁ⁠ω⁠ㆁ)⁠ 點擊蛋糕吹蠟燭吧 ꒰⁠⑅⁠-⁠༚⁠-꒱⁠˖ ~~";
+                step++;
             }, 1000);
         } else if (step === 1) {
             // Cake → Candle blowing GIF
             cakeImage.classList.remove("fade-in");
             cakeImage.classList.add("fade-out");
             setTimeout(() => {
-            cakeImage.src = "blowcake.gif";
-            caption.textContent = "今年也要平安健康~要繼續好好為國效勞哦 (⁠ ^ ▽ ^ )";
-            cakeImage.classList.remove("fade-out");
-            cakeImage.classList.add("fade-in");
-            step++;
+                cakeImage.onload= () => {
+                    cakeImage.classList.remove("fade-out");
+                    cakeImage.classList.add("fade-in");
+                };
+                cakeImage.src = "blowcake.gif";
+                caption.textContent = "今年也要平安健康~要繼續好好為國效勞哦 (⁠ ^ ▽ ^ )";
+                step++;
             }, 1000);
         }
         });
@@ -169,6 +175,7 @@
     </script>
 </body>
 </html>
+
 
 
 
