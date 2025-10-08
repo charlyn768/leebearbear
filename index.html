@@ -159,11 +159,12 @@
 
         document.addEventListener("visibilitychange", ()=>{
             if (document.hidden){
-                audioBefore.pause;
-                audioAfter.pause;
+                audioBefore.pause();
+                audioAfter.pause();
             }
         )};
     </script>
 </body>
 </html>
+
 
