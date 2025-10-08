@@ -12,6 +12,7 @@
         @font-face {
             font-family: "Zpix";
             src: url("zpix.ttf") format("truetype");
+            font-display: swap;
         }
 
         * {
@@ -21,7 +22,7 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
             background: linear-gradient(#c9a7eb, #fbb6b6);
             display: flex;
@@ -29,7 +30,8 @@
             align-items: center;
             font-family: "Zpix", monospace; /*pixelfont*/
             image-rendering: pixelated;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow y: auto;
             text-align: center;
         }
 
@@ -107,7 +109,7 @@
     </div>
 
     <audio id="audioBefore" src="bgm.mp3" preload="auto"></audio>
-    <audio id="audioAfter" src="birthdaybgm.mp3" preload="auto" loop></audio>
+    <audio id="audioAfter" src="birthdaybgm.mp3" preload="none" loop></audio>
 
     <script>
         const cakeImage = document.getElementById("cakeImage");
@@ -132,6 +134,7 @@
             audioBefore.pause();
             audioBefore.currentTime = 0;
 
+            audioAfter.load();
             audioAfter.play();
 
             // Box → Cake
@@ -166,6 +169,7 @@
     </script>
 </body>
 </html>
+
 
 
 
