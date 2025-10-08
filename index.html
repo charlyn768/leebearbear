@@ -183,11 +183,19 @@
             if (document.hidden){
                 audioBefore.pause();
                 audioAfter.pause();
+            } else {
+                //Resume music
+                if (step === 0) {
+                    audioBefore.play();
+                } else if (step >= 1) {
+                    audioAfter.play();
+                }
             }
         });
     </script>
 </body>
 </html>
+
 
 
 
