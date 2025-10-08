@@ -114,6 +114,12 @@
     <audio id="audioAfter" src="birthdaybgm.mp3" preload="none" loop></audio>
 
     <script>
+        const preloadImages = ["cakewithfire.png", "blowcake.gif"];
+        preloadImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+        
         const cakeImage = document.getElementById("cakeImage");
         const caption = document.getElementById("caption");
 
@@ -143,7 +149,7 @@
             cakeImage.classList.remove("fade-in");
             cakeImage.classList.add("fade-out");
 
-            const newImg = newImage();
+            const newImg = new Image();
             newImg.src = "cakewithfire.png";
             newImg.onload = () => {
                 setTimeout(() => {
@@ -159,7 +165,7 @@
             cakeImage.classList.remove("fade-in");
             cakeImage.classList.add("fade-out");
 
-            const newImg = newImage();
+            const newImg = new Image();
             newImg.src = "blowcake.gif";
             newImg.onload = () => {
                 setTimeout(() => {
@@ -182,6 +188,7 @@
     </script>
 </body>
 </html>
+
 
 
 
