@@ -138,31 +138,36 @@
             audioAfter.play();
 
             // Box → Cake
+            cakeImage.classList.remove("fade-in");
             cakeImage.classList.add("fade-out");
 
-            // wait for fade-out to finish (1s), then switch image
-            setTimeout(() => {
-                cakeImage.onload= () => {
+            const newImg = newImage();
+            newImg.src = "cakewithfire.png";
+            newImg.onload = () => {
+                setTimeout(() => {
+                    cakeImage.src = newImg.src;
+                    caption.textContent = "李大熊生日快樂！！(⁠ㆁ⁠ω⁠ㆁ)⁠ 點擊蛋糕吹蠟燭吧 ꒰⁠⑅⁠-⁠༚⁠-꒱⁠˖ ~~";
                     cakeImage.classList.remove("fade-out");
                     cakeImage.classList.add("fade-in");
-                };
-                cakeImage.src = "cakewithfire.png";
-                caption.textContent = "李大熊生日快樂！！(⁠ㆁ⁠ω⁠ㆁ)⁠ 點擊蛋糕吹蠟燭吧 ꒰⁠⑅⁠-⁠༚⁠-꒱⁠˖ ~~";
-                step++;
-            }, 1000);
+                    step++;
+                }, 300); //shorter delay after load is confirmed
+            };
         } else if (step === 1) {
             // Cake → Candle blowing GIF
             cakeImage.classList.remove("fade-in");
             cakeImage.classList.add("fade-out");
-            setTimeout(() => {
-                cakeImage.onload= () => {
+
+            const newImg = newImage();
+            newImg.src = "blowcake.gif";
+            newImg.onload = () => {
+                setTimeout(() => {
+                    cakeImage.src = newImg.src;
+                    caption.textContent = "今年也要平安健康~要繼續好好為國效勞哦 (⁠ ^ ▽ ^ )";
                     cakeImage.classList.remove("fade-out");
                     cakeImage.classList.add("fade-in");
-                };
-                cakeImage.src = "blowcake.gif";
-                caption.textContent = "今年也要平安健康~要繼續好好為國效勞哦 (⁠ ^ ▽ ^ )";
-                step++;
-            }, 1000);
+                    step++;
+                }, 300);
+            }
         }
         });
 
@@ -175,6 +180,7 @@
     </script>
 </body>
 </html>
+
 
 
 
